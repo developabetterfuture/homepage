@@ -1,16 +1,15 @@
-# The build workflow for the DABF homepage 
+# The build workflow for the DABF homepage
 
 name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -18,18 +17,24 @@ jobs:
         node-version: [16.x, 18.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-        
-    - name: Install dependencies with yarn
-      run: yarn install
-      
-    - name: Build react application
-      run: yarn build
-      
-    - name: Run tests
-      run: yarn test
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      - name: Install dependencies with yarn
+        run: yarn install
+
+      - name: Run eslint
+        run: yarn lint
+
+      - name: Build react application
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Vitest code coverage
+        run: yarn coverage
