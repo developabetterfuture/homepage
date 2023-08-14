@@ -1,0 +1,9 @@
+# Release the software to production
+name: Release
+
+description: Checks out the repository and does something
+runs:
+  steps:
+    - run: |
+        echo "Releasing to production"
+      shell: bash
