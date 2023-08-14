@@ -38,3 +38,6 @@ jobs:
 
       - name: Vitest code coverage
         run: yarn coverage
+
+      - name: Release
+        uses: ./.github/workflows/release
