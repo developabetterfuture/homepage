@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies with yarn
       run: yarn install
       
-    - name: Build node application
+    - name: Build react application
       run: yarn build --if-present
       
     - name: Run tests
