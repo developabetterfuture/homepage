@@ -1,8 +1,19 @@
 # Release the software to production
 name: Release
-description: Checks out the repository and does something
-runs:
-  steps:
-    - run: |
-        echo "Releasing to production"
-      shell: bash
+
+on:
+  workflow_dispatch:
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release to production
+        run: |
+          echo "Releasing to production"
+        shell: bash
+
+      - name: Run webhook event
+        run: |
+          curl -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/octocat/hello-world/dispatches \
+          -d '{"event_type":"event_type"}'
+        shell: bash
