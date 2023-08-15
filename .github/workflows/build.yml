@@ -39,5 +39,7 @@ jobs:
       - name: Vitest code coverage
         run: yarn coverage
 
-      - name: Release
-        uses: ./.github/workflows/release.yml
+      - uses: actions/upload-artifact@main
+        with:
+          name: Webpack artifacts
+          path: public/
