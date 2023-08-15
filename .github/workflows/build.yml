@@ -40,4 +40,4 @@ jobs:
         run: yarn coverage
 
       - name: Release
-        uses: ./.github/workflows/release
+        uses: ./.github/workflows/release.yml
