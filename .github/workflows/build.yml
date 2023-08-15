@@ -1,6 +1,6 @@
 # The build workflow for the DABF homepage
 
-name: Node.js CI
+name: Build workflow
 
 on:
   push:

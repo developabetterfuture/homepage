@@ -1,5 +1,5 @@
 # Release the software to production
-name: Release
+name: Release workflow
 
 on:
   workflow_dispatch:
